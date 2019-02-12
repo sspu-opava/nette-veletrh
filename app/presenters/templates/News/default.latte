@@ -1,0 +1,7 @@
+{* Latte template *}
+
+{block content}
+<h1>{$nadpis|upper}</h1>
+{foreach $zpravy as $zprava}
+    <p><a n:href="News:view $zprava->id">{$zprava->title}</a></p>
+{/foreach}

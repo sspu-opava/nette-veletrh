@@ -1,0 +1,8 @@
+{* Latte template *}
+
+{block content}
+<h1>{$zprava->title}</h1>
+<p>{$zprava->content}</p>
+<hr>
+<p>{$zprava->category}, {$zprava->published|date:'j. n. Y'}</p>
+<p><a n:href="News:default">Zpět na seznam</p>
