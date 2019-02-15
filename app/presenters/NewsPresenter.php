@@ -3,6 +3,7 @@
 namespace App\Presenters;
 
 use App\Model\NewsManager;
+use Tracy\Debugger;
 
 final class NewsPresenter extends BasePresenter {
 
@@ -15,6 +16,9 @@ final class NewsPresenter extends BasePresenter {
     public function renderDefault() {
         $this->template->zpravy = $this->newsManager->readAll();
         $this->template->nadpis = 'Seznam zpráv';
+        Debugger::dump($this->template->zpravy);
+        Debugger::barDump($this->template->nadpis);
+        Debugger::log('Pokus');        
     }
 
     public function renderView($id) {
