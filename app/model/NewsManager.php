@@ -26,11 +26,27 @@ final class NewsManager {
         $this->database = $database;
     }
     
-    public function readAll() {
-        return $this->database->table('news')->fetchAll();
+    public function readAll($order) {
+        return $this->database
+                ->table('news')
+                ->order($order)
+                ->fetchAll();
     }
 
     public function readById($id) {
         return $this->database->table('news')->get($id);
-    }    
+    }  
+    
+    public function create($values) {
+        $this->database->table('news')->insert($values);
+    }
+
+    public function update($values, $id) {
+        $this->database->table('news')->get($id)->update($values);
+    }
+    
+    public function delete($id) {
+        $this->database->table('news')->get($id)->delete();
+    }
+    
 }

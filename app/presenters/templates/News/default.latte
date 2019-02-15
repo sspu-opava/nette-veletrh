@@ -2,6 +2,26 @@
 
 {block content}
 <h1>{$nadpis|upper}</h1>
-{foreach $zpravy as $zprava}
-    <p><a n:href="News:view $zprava->id">{$zprava->title}</a></p>
-{/foreach}
+<table border="1">
+    <thead>
+        <tr>
+            <th><a n:href="News:default 'id'">id</a></th>
+            <th><a n:href="News:default 'title'">title</a></th>
+            <th><a n:href="News:default 'published DESC'">published</a></th>
+            <th><a n:href="News:default 'category'">category</a></th>
+            <th>action</th>
+        </tr>
+    </thead>    
+    <tbody>
+    {foreach $zpravy as $zprava}
+        <tr>
+            <td>{$zprava->id}</td>
+            <td><a n:href="News:view $zprava->id">{$zprava->title}</a></td>
+            <td>{$zprava->published}</td>
+            <td>{$zprava->category}</td>
+            <td><a n:href="News:update $zprava->id">Editovat</a> <a n:href="News:delete $zprava->id">Smazat</a></td>
+        </tr>
+    {/foreach}
+    </tbody>    
+</table>    
+<p><a n:href="News:create">Nový záznam</a></p>
